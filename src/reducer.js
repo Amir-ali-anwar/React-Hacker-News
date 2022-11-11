@@ -14,12 +14,16 @@ const reducer = (action, state) => {
       return {
         ...state,
         isLoading: false,
-        data: action.payload.hits,
-        nbpages: action.payload.nbpages,
+        hits: action.payload.hits,
+        nbPages: action.payload.nbPages,
       };
+    case REMOVE_STORY:
+     return {
+       ...state,
+       hits: state.hits.filter((story) => story.objectID !== action.payload.id),
+     }; 
     default:
       return state;
-    // throw new Error(`no mathching "${action.type}" action type`);
   }
 };
 export default reducer;
