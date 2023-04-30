@@ -37,12 +37,16 @@ const AppProvider = ({ children }) => {
   const removeStory=(id)=>{
     dispatch({ type: REMOVE_STORY, payload: id });
   }  
+  const hanldeSearch=(searchParam)=>{
+    dispatch({ type: HANDLE_SEARCH, payload: searchParam });
+    
+  }
   useEffect(() => {
     fetchStories(`${API_ENDPOINT}query=${state.query}&page=${state.page}`);
-  }, []);
+  }, [state.query]);
 
   return (
-    <AppContext.Provider value={{ ...state, removeStory }}>
+    <AppContext.Provider value={{ ...state, removeStory,hanldeSearch }}>
       {children}
     </AppContext.Provider>
   );
