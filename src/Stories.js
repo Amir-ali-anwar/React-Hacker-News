@@ -11,8 +11,24 @@ const Stories = () => {
   return (
     <section className="stories">
       {hits?.map((story) => {
-        console.log(story);
-        return <article className="story">sinlge story</article>;
+        const { objectID, title, num_comments, url, points, author } = story
+        return <article key={objectID} className='story'>
+          <h4>{title}</h4>
+          <p className='info'>
+            {points} points by <span>{author} | </span> {num_comments}{' '}
+            comments
+          </p>
+          <div>
+            <a 
+             href={url}
+             className='read-link'
+             target='_blank'
+             rel='noopener noreferrer'
+            >
+                 read more
+            </a>
+          </div>
+        </article>;
       })}
     </section>
   );

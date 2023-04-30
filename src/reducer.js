@@ -6,7 +6,8 @@ import {
   HANDLE_SEARCH,
 } from "./actions";
 
-const reducer = (action, state) => {
+const reducer = (state, action) => {
+  console.log(action.type);
   switch (action.type) {
     case SET_LOADING:
       return { ...state, isLoading: true };
@@ -14,16 +15,11 @@ const reducer = (action, state) => {
       return {
         ...state,
         isLoading: false,
-        hits: action?.payload?.hits,
+        hits: action.payload.hits,
         nbPages: action.payload.nbPages,
       }
-    case REMOVE_STORY:
-      return {
-        ...state,
-        hits: state.hits.filter((story) => story.objectID !== action.payload.id),
-      };
     default:
-      return { ...state };
+      throw new Error(`no matching "${action.type}" action type`)
   }
 };
 export default reducer;
