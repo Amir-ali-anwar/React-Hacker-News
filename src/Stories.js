@@ -4,6 +4,7 @@ import { useGlobalContext } from "./context";
 
 const Stories = () => {
   const { isLoading, hits } = useGlobalContext();
+  console.log(hits);
   if (isLoading) {
     return <div className="loading"></div>;
   }
@@ -11,7 +12,7 @@ const Stories = () => {
     <section className="stories">
       {hits?.map((story) => {
         console.log(story);
-        return <article className="story"></article>;
+        return <article className="story">sinlge story</article>;
       })}
     </section>
   );

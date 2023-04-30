@@ -14,16 +14,16 @@ const reducer = (action, state) => {
       return {
         ...state,
         isLoading: false,
-        hits: action.payload.hits,
+        hits: action?.payload?.hits,
         nbPages: action.payload.nbPages,
-      };
+      }
     case REMOVE_STORY:
-     return {
-       ...state,
-       hits: state.hits.filter((story) => story.objectID !== action.payload.id),
-     }; 
+      return {
+        ...state,
+        hits: state.hits.filter((story) => story.objectID !== action.payload.id),
+      };
     default:
-      return {...state};
+      return { ...state };
   }
 };
 export default reducer;
