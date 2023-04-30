@@ -34,19 +34,22 @@ const AppProvider = ({ children }) => {
       console.log(error)
     }
   }
-  const removeStory=(id)=>{
+  const removeStory = (id) => {
     dispatch({ type: REMOVE_STORY, payload: id });
-  }  
-  const hanldeSearch=(searchParam)=>{
+  }
+  const hanldeSearch = (searchParam) => {
     dispatch({ type: HANDLE_SEARCH, payload: searchParam });
-    
+
+  }
+  const handlePages = (value) => {
+    dispatch({ type: HANDLE_PAGE, payload: value });
   }
   useEffect(() => {
     fetchStories(`${API_ENDPOINT}query=${state.query}&page=${state.page}`);
-  }, [state.query]);
+  }, [state.query,state.page]);
 
   return (
-    <AppContext.Provider value={{ ...state, removeStory,hanldeSearch }}>
+    <AppContext.Provider value={{ ...state, removeStory, hanldeSearch, handlePages }}>
       {children}
     </AppContext.Provider>
   );
