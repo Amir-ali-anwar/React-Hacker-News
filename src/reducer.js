@@ -23,7 +23,7 @@ const reducer = (action, state) => {
        hits: state.hits.filter((story) => story.objectID !== action.payload.id),
      }; 
     default:
-      return state;
+      return {...state};
   }
 };
 export default reducer;
